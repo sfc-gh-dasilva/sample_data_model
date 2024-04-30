@@ -1,0 +1,40 @@
+name: sample_data_model
+tables:
+  - name: orders
+    synonyms:
+    description: this is a table description
+    base_table:
+      database: MY_DB
+      schema: MY_SCHEMA
+      table: orders
+    columns:
+      - name: order_id
+        expr: order_id
+        kind: dimension
+        unique: true
+      - name: customer_id
+        expr: customer_id
+        kind: dimension
+        unique: false
+    primary_key:
+      columns:
+        - order_id
+
+  - name: order_items
+    description: This is a table description.
+    base_table:
+      database: MY_DB
+      schema: MY_SCHEMA
+      table: order_items
+    columns:
+      - name: order_item_id
+        expr: order_item_id
+        kind: dimension
+        unique: true
+      - name: order_id
+        expr: order_id
+        kind: dimension
+        unique: false
+    primary_key:
+      columns:
+        - order_item_id
